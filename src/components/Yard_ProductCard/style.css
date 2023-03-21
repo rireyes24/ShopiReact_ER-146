@@ -1,0 +1,10 @@
+.button-add-card
+{
+    background-image: url('../../assets/icons/bt_add_to_cart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;    
+    width: 48px;
+    height: 48px;       
+    display: block;
+}

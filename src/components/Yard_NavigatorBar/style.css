@@ -1,0 +1,32 @@
+
+.icon-menu
+{
+    background-image: url('../../assets/icons/icon_menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px; 
+}
+
+.icon-logo
+{    
+    display: inline-block;
+    background-image: url('../../assets/images/logo_yard_sale.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 120px;
+    height: 30px;
+}
+
+.icon-cart
+{
+    display: inline-block;
+    background-image: url('../../assets/icons/shape1.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;  
+}
