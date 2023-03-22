@@ -1,0 +1,11 @@
+.login__logo-long
+{
+    background-image: url('../../assets/images/logo_yard_sale.svg');
+    background-repeat: no-repeat;    
+    background-position: center;
+    background-size: contain;
+    width: 252px;
+    height: 42px;   
+    align-self: center;
+    justify-self: center;
+}

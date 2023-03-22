@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 import './style.css'
 
+const TableGrid = styled.div`
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 182px);   
+    place-content: center; 
+    gap: 34px;
+    margin-top: 100px;    
+    margin-bottom: 200px;  
+`;
+
 const DivCard = styled.div`
     background-color: transparent;
     width: 180px;
     height: 240px; 
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 76% 12% 12%;
+    grid-template-rows: 76% 4% 10% 10%;
     margin: 5px;
 `;
 
@@ -24,10 +34,12 @@ const H3Card = styled.h3`
     width: 100%;
     height: 100%;
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
     display: grid;
     align-items: center;
-    font-size: 16px;
+    font-size: var(--md);
+    font-family: 'Roboto', sans-serif;    
+    color: #404040;
     letter-spacing: 1px;
 `;
 
@@ -35,10 +47,13 @@ const H4Card = styled.h4`
     width: 100%;
     height: 100%;
     grid-column: 1 / 2;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
     display: grid;
     align-items: center;
-    font-size: 14px;
+    font-size: var(--sm);
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    color: #404040;
     letter-spacing: 1px;
 `;
 
@@ -46,7 +61,7 @@ const ButtonAddCart = styled.button`
     border: none;
     background-color: transparent;
     grid-column: 2 / 3;
-    grid-row: 2 / 4;
+    grid-row: 3 / 5;
     justify-self: center;
     align-self: center;
     width: 48px;
@@ -56,4 +71,4 @@ const ButtonAddCart = styled.button`
     cursor: pointer;
 `;
 
-export { DivCard, ImageCard, H3Card, H4Card, ButtonAddCart };
+export { TableGrid, DivCard, ImageCard, H3Card, H4Card, ButtonAddCart };
