@@ -7,34 +7,39 @@ const DivLogin = styled.div`
     top: 0;
     margin-top: 20px;
     margin-right: 10px;
-    width: 375px;
+    width: 320px;
     max-width: 375px;    
-    border-radius: 28px;
-    background-color: #f0f0f0; 
-    padding: 20px;
+    border-radius: 20px;
+    background-color: #e2e2e2; 
+    padding: 20px 10px;
     display: grid;
+    grid-template-columns: 100%;
+    place-items: center;
     justify-content: center;
     align-items: center;    
-    z-index: 5;
+    z-index: 2;
 `;
 
 const DivCard = styled.div`
-    background-color: #bebebe;
-    width: 90%;
-    height: 120px; 
+    
+    width: 100%;
+    height: 90px; 
+    border: 2px solid #bebebe;    
     display: grid;
-    grid-template-columns: 40% 40% 20%;  
+    grid-template-columns: 30% 5% 35% 30%;  
     grid-auto-flow: 100%;  
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 10px;    
 `;
 
 const ImageCard = styled.img`
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 40%);
     grid-column: 1 / 2;
-    object-fit: cover;
-    border-radius: 20px;
+    object-fit: cover ;    
     overflow: hidden;    
     align-self: center;
     justify-self: center;
@@ -43,9 +48,9 @@ const ImageCard = styled.img`
 const H3Card = styled.h3`
     width: 100%;
     height: 100%;
-    grid-column: 3 / 4;    
+    grid-column: 4 / 5;       
     display: grid;
-    align-items: center;
+    place-items: center;
     font-size: var(--md);
     font-family: 'Roboto', sans-serif;    
     color: #404040;
@@ -55,7 +60,7 @@ const H3Card = styled.h3`
 const H4Card = styled.h4`
     width: 100%;
     height: 100%;
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 1 / 2;
     display: grid;
     align-items: center;
@@ -66,32 +71,16 @@ const H4Card = styled.h4`
     letter-spacing: 1px;
 `;
 
-// const ButtonAddCart = styled.button`
-//     border: none;
-//     background-color: transparent;
-//     grid-column: 2 / 3;
-//     grid-row: 3 / 5;
-//     justify-self: center;
-//     align-self: center;
-//     width: 48px;
-//     height: 48px;       
-//     display: grid;
-//     place-content: center;
-//     cursor: pointer;
-// `;
-
-
-
-const DivInfoProducts = styled.div`
-    background-color: #bebebe;
-    width: 90%;
+const DivInfoProducts = styled.div`    
+    width: 100%;
     height: 80px; 
     display: grid;
-    grid-template-columns: 80% 20%; 
+    grid-template-columns: 60% 40%; 
     grid-template-rows: 50% 50%; 
-    place-items: center;
+    place-items: center;    
     margin: 5px;
-    border-radius: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 `;
 
 const PDate = styled.p`
@@ -109,7 +98,7 @@ const PArticles = styled.p`
     font-size: var(--sm);
     font-weight: 400;
     line-height: 1.7rem;
-    color: #797979;  
+    color: #797979;      
 `;
 
 const PPrice = styled.p`
@@ -119,7 +108,26 @@ const PPrice = styled.p`
     font-weight: bold;
     line-height: 1.87rem;
     color: #404040;
-    justify-self: flex-start;
+    justify-self: center;
+    align-self: center;
 `;
 
-export { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice };
+const ButtonBuy = styled.button`
+    width: 100%;
+    height: 54px;    
+    border-radius: 10px;
+    border: 0;
+    margin-top: 26px;
+    background-color: var(--hospital_green);
+    font-size: var(--lg);
+    font-weight: bold;
+    line-height: 2.25rem;
+    color: var(--white);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+`;
+
+
+
+export { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice, ButtonBuy };

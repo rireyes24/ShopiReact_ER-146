@@ -15,8 +15,8 @@ const NavBar = styled.nav`
 `;
 
 const ButtonMenu = styled.button`
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: grid;
     place-content: center;
     border: none;
@@ -26,24 +26,31 @@ const ButtonMenu = styled.button`
 `;
 
 const ButtonCart = styled.button`
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: grid;
-    place-content: center;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 30% 70%;  
     border: none;
-    border-radius: 50px;
+    border-radius: 60px;
+    background-color: transparent;
     cursor: pointer;
     grid-column: 3 / 4;    
 `;
 
 const GreenCircle = styled.div`
-    width: 20px;
-    height: 20px;
-    background-color: green;
+    width: 22px;
+    height: 22px;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: center;
+    justify-content: center;
+    background-color: #00b400;
     border-radius: 40px;
     color: white;
-    display: grid;
+    display: grid;    
     place-items: center;
+    font-family: 'Quicksand', sans-serif;
 `;
 
 export { NavBar, ButtonMenu, ButtonCart, GreenCircle };

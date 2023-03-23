@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavBar, ButtonMenu, ButtonCart, GreenCircle } from './styled';
-import { dataProductsCart } from '../../utils/dataProductsCart.js';
 import './style.css';
 
 function NavigatorBar({onCategories, setOnCategories, onAddToCart, setOnAddToCart, addCart}){

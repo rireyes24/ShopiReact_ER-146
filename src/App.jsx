@@ -9,12 +9,11 @@ import { AccountPage } from './components/AccountPage';
 import './App.css'
 
 function App() {
-
-  //const totalProductsCart = dataProductsCart.length;
+  
   const [onCategories, setOnCategories] = React.useState(false);
-  const [onAddToCart, setOnAddToCart] = React.useState(true);
+  const [onAddToCart, setOnAddToCart] = React.useState(false);
 
-  //const [addCart, setAddCart] = React.useState(totalProductsCart);
+  const [addCart, setAddCart] = React.useState(0);
 
   const [addToCartID, setAddToCartID] = React.useState(0);
   const [addCardTrue, setAddCardTrue] = React.useState(false);
@@ -39,6 +38,7 @@ function App() {
         setOnCategories={setOnCategories}
         onAddToCart={onAddToCart}
         setOnAddToCart={setOnAddToCart}
+        addCart={addCart}
       />
         <DivLoginPage>
           <Routes>          
@@ -49,6 +49,8 @@ function App() {
               addCardTrue={addCardTrue}
               setAddCardTrue={setAddCardTrue}
               addToCartID={addToCartID}
+              addCart={addCart}
+              setAddCart={setAddCart}
             />} />
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/create" element={<CreateAccount/>}/>

@@ -3,7 +3,7 @@ import { TableGrid, DivCard, ImageCard, H3Card, H4Card, ButtonAddCart } from './
 import { dataProducts } from '../../utils/dataProducts.js';
 import { dataProductsCart } from '../../utils/dataProductsCart';
 
-function ProductCard({ addCardTrue, setAddCardTrue }){
+function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
 
     const imagesURL = 'https://res.cloudinary.com/dejj8n6g7/image/upload/v1679423980/YardSaleReact';
     
@@ -17,7 +17,7 @@ function ProductCard({ addCardTrue, setAddCardTrue }){
     }
 
     React.useEffect(() => {
-                   
+           
         setAddCardTrue(false);
 
     }, [addCardTrue])
@@ -35,6 +35,7 @@ function ProductCard({ addCardTrue, setAddCardTrue }){
                         <ButtonAddCart onClick={() => {  
                            setTimeout(() => {
                             dataProductsCart.push(addToCart(product.id))   
+                            setAddCart(dataProductsCart.length);
                             setAddCardTrue(true);
                            }, 100);
                         }}><span className="button-add-card"></span></ButtonAddCart>

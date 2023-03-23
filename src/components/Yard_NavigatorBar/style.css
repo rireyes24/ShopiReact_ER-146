@@ -1,7 +1,7 @@
 
 .icon-menu
 {
-    background-image: url('../../assets/icons/icon_menu.svg');
+    background-image: url('../../assets/icons/menu-rounded.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -23,10 +23,14 @@
 .icon-cart
 {
     display: inline-block;
-    background-image: url('../../assets/icons/shape1.svg');
+    background-image: url('../../assets/icons/shopping-cart.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 24px;
-    height: 24px;  
+    width: 30px;
+    height: 30px;  
+    align-self: center;
+    justify-self: center;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
 }
