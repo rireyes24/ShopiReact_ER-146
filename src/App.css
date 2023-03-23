@@ -1,7 +1,9 @@
 #root {
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 8vh 92vh;
   flex-direction: column;
   align-items: center;
 }

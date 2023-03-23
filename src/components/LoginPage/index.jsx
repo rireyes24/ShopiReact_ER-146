@@ -1,11 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {DivLoginPage, DivLogin, FormLogin, InputText, InputLabel, ButtonLogin, Forgot, ButtonSingUp } from './styled';
 
 
 function LoginPage(){
+
+    const navigate = useNavigate();
+
+    function clickCreate(){
+        navigate('/create');        
+        console.log('Oki');
+    }
+
     return(
         <>
-            <DivLoginPage>                
+            <DivLoginPage>    
+                <h2>Login</h2>            
+
                 <DivLogin>
                     <span class="login__logo-long"></span>
 
@@ -21,7 +32,7 @@ function LoginPage(){
                         <Forgot href="/" >Forgot my password</Forgot>
                     </FormLogin> 
 
-                    <ButtonSingUp type="button">Sign up</ButtonSingUp>
+                    <ButtonSingUp type="button" onClick={() => clickCreate()}>Create Account</ButtonSingUp>
                 </DivLogin>            
             </DivLoginPage>
         </>

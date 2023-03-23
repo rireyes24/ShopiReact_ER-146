@@ -1,0 +1,31 @@
+
+
+
+.categories #ul-margin
+{
+    border-bottom: 1px solid black;
+}
+
+.categories .account
+{
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+ .account .email
+{
+    font-size: var(--sm);
+    font-weight: 300;
+    line-height: 1.75rem;
+    color: var(--black);
+}
+
+.a-singout
+{
+    display: inline-block;
+    font-size: var(--sm);
+    font-weight: bold;
+    line-height: 1.75rem;
+    color: var(--hospital_green);
+    text-decoration: none;   
+}

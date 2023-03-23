@@ -1,11 +1,27 @@
 import React from 'react';
 import { TableGrid, DivCard, ImageCard, H3Card, H4Card, ButtonAddCart } from './styled';
 import { dataProducts } from '../../utils/dataProducts.js';
+import { dataProductsCart } from '../../utils/dataProductsCart';
 
-
-function ProductCard(){
+function ProductCard({ addCardTrue, setAddCardTrue }){
 
     const imagesURL = 'https://res.cloudinary.com/dejj8n6g7/image/upload/v1679423980/YardSaleReact';
+    
+    function addToCart(idCard){   
+        const product = [...dataProducts];     
+        const productIndex = dataProducts.findIndex(item => item.id === idCard);
+        const newProduct = product[productIndex];
+
+        console.log(newProduct);
+        return newProduct;        
+    }
+
+    React.useEffect(() => {
+                   
+        setAddCardTrue(false);
+
+    }, [addCardTrue])
+
 
     return(
         <>
@@ -16,7 +32,12 @@ function ProductCard(){
                         <ImageCard src={`${imagesURL}/${product.image}`} alt={product.name} />                
                         <H3Card>$ {product.price}</H3Card>
                         <H4Card>{product.name}</H4Card>
-                        <ButtonAddCart><span className="button-add-card"></span></ButtonAddCart>
+                        <ButtonAddCart onClick={() => {  
+                           setTimeout(() => {
+                            dataProductsCart.push(addToCart(product.id))   
+                            setAddCardTrue(true);
+                           }, 100);
+                        }}><span className="button-add-card"></span></ButtonAddCart>
                     </DivCard>
                 ))}
             </TableGrid>

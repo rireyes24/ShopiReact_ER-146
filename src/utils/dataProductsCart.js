@@ -1,0 +1,3 @@
+const dataProductsCart = []
+
+export { dataProductsCart };
