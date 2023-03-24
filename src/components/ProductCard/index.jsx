@@ -22,6 +22,16 @@ function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
 
     }, [addCardTrue])
 
+    
+
+    // Al hacerle Click a Button AddToCart
+    const handleClick = (productID) => {
+        setTimeout(() => {
+            dataProductsCart.push(addToCart(productID))   
+            setAddCart(dataProductsCart.length);
+            setAddCardTrue(true);
+        }, 100);
+    }
 
     return(
         <>
@@ -32,13 +42,7 @@ function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
                         <ImageCard src={`${imagesURL}/${product.image}`} alt={product.name} />                
                         <H3Card>$ {product.price}</H3Card>
                         <H4Card>{product.name}</H4Card>
-                        <ButtonAddCart onClick={() => {  
-                           setTimeout(() => {
-                            dataProductsCart.push(addToCart(product.id))   
-                            setAddCart(dataProductsCart.length);
-                            setAddCardTrue(true);
-                           }, 100);
-                        }}><span className="button-add-card"></span></ButtonAddCart>
+                        <ButtonAddCart onClick={() => handleClick(product.id)}><span className="button-add-card"></span></ButtonAddCart>
                     </DivCard>
                 ))}
             </TableGrid>

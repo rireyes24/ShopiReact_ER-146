@@ -1,11 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {DivLoginPage, DivLogin, FormLogin, InputText, InputLabel, ButtonLogin, Forgot, ButtonSingUp } from './styled';
+import { useAuth } from '../../utils/authentication';
+
 
 
 function LoginPage(){
 
     const navigate = useNavigate();
+    const auth = useAuth();
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const login = (event) => {
+        event.preventDefault();
+        auth.login({username, password});
+    }
 
     function clickCreate(){
         navigate('/create');        
@@ -18,17 +28,29 @@ function LoginPage(){
                 <h2>Login</h2>            
 
                 <DivLogin>
-                    <span class="login__logo-long"></span>
+                    <span className="login__logo-long"></span>
 
-                    <FormLogin action="" class="login__form">                    
-                        <InputLabel for="mail">Email address</InputLabel>            
-                        <InputText id="mail" type="email" placeholder="example2023@gmail.com" />
+                    <FormLogin action="" className="login__form" onSubmit={login}>                    
+                        <InputLabel htmlFor="user">Email address</InputLabel>            
+                        <InputText 
+                            id="user" 
+                            type="text" 
+                            placeholder="john" 
+                            value={username}
+                            onChange={event => setUsername(event.target.value)}
+                        />
                         
-                        <InputLabel for="password">Password</InputLabel>           
-                        <InputText id="password" type="password" placeholder="**********" />
+                        <InputLabel htmlFor="password">Password</InputLabel>           
+                        <InputText 
+                            id="password" 
+                            type="password" 
+                            placeholder="**********"
+                            value={password}
+                            onChange={event => setPassword(event.target.value)}
+                        />
                                 
 
-                        <ButtonLogin type="button">Log In</ButtonLogin>
+                        <ButtonLogin type="submit">Log In</ButtonLogin>
                         <Forgot href="/" >Forgot my password</Forgot>
                     </FormLogin> 
 

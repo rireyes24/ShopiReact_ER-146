@@ -11,7 +11,9 @@ function NavigatorBar({onCategories, setOnCategories, onAddToCart, setOnAddToCar
                 <span className="icon-menu"></span>
             </ButtonMenu>
 
-            <span className="icon-logo"></span>             
+            <span className="icon-logo"></span> 
+
+            <p>User</p>            
 
             <ButtonCart onClick={() => setOnAddToCart(!onAddToCart)}>            
                 <span className="icon-cart"></span>
