@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductCard } from '../Yard_ProductCard';
-import { Categories } from '../Yard_Categories';
-import { AddToCart } from '../Yard_AddToCart';
+import { ProductCard } from '../../components/ProductCard';
+import { Categories } from '../../components/Categories';
+import { AddToCart } from '../../components/AddToCart';
 
 const HomePage = (props) => {
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 import { HashRouter, Routes, Route} from 'react-router-dom';
-import { HomePage } from './components/HomePage';
-import { NavigatorBar } from './components/Yard_NavigatorBar';
-import { LoginPage } from './components/LoginPage';
-import { CreateAccount } from './components/CreateAccountPage';
-import { AccountPage } from './components/AccountPage';
+import { NavigatorBar } from './components/NavigatorBar';
+import { HomePage } from './pages/Home';
+import { LoginPage } from './pages/Login';
+import { CreateAccount } from './pages/CreateAccount';
+import { AccountPage } from './pages/Account';
 import './App.css'
 
 function App() {
@@ -33,13 +33,13 @@ function App() {
   return (
     <>
       <HashRouter>
-      <NavigatorBar 
-        onCategories={onCategories} 
-        setOnCategories={setOnCategories}
-        onAddToCart={onAddToCart}
-        setOnAddToCart={setOnAddToCart}
-        addCart={addCart}
-      />
+        <NavigatorBar 
+          onCategories={onCategories} 
+          setOnCategories={setOnCategories}
+          onAddToCart={onAddToCart}
+          setOnAddToCart={setOnAddToCart}
+          addCart={addCart}
+        />
         <DivLoginPage>
           <Routes>          
             <Route path="/" element={<HomePage 
