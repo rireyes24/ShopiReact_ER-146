@@ -2,8 +2,11 @@ import React from 'react';
 import { TableGrid, DivCard, ImageCard, H3Card, H4Card, ButtonAddCart } from './styled';
 import { dataProducts } from '../../utils/dataProducts.js';
 import { dataProductsCart } from '../../utils/dataProductsCart';
+import { CreateContext } from '../../context/AppContext.js'
 
-function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
+function ProductCard(){
+
+    const { product, setProduct } = React.useContext(CreateContext);
 
     const imagesURL = 'https://res.cloudinary.com/dejj8n6g7/image/upload/v1679423980/YardSaleReact';
     
@@ -11,25 +14,14 @@ function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
         const product = [...dataProducts];     
         const productIndex = dataProducts.findIndex(item => item.id === idCard);
         const newProduct = product[productIndex];
-
-        console.log(newProduct);
         return newProduct;        
     }
 
-    React.useEffect(() => {
-           
-        setAddCardTrue(false);
-
-    }, [addCardTrue])
-
-    
 
     // Al hacerle Click a Button AddToCart
     const handleClick = (productID) => {
-        setTimeout(() => {
-            dataProductsCart.push(addToCart(productID))   
-            setAddCart(dataProductsCart.length);
-            setAddCardTrue(true);
+        setTimeout(() => {            
+            setProduct([...product, addToCart(productID)]);         
         }, 100);
     }
 
@@ -38,7 +30,7 @@ function ProductCard({ addCardTrue, setAddCardTrue, setAddCart }){
             <h1>Card</h1>
             <TableGrid>
                 {dataProducts.map(product => (
-                    <DivCard key={product.name}>
+                    <DivCard key={product.id}>
                         <ImageCard src={`${imagesURL}/${product.image}`} alt={product.name} />                
                         <H3Card>$ {product.price}</H3Card>
                         <H4Card>{product.name}</H4Card>

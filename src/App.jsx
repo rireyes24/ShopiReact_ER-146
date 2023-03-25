@@ -7,62 +7,78 @@ import { LoginPage } from './pages/Login';
 import { CreateAccount } from './pages/CreateAccount';
 import { AccountPage } from './pages/Account';
 import { AuthProvider } from './utils/authentication';
+import { AuthRouter } from './utils/authentication';
+import { CreateContext } from './context/AppContext';
+
 import './App.css'
+
+const DivLoginPage = styled.div`
+  position: relative;   
+  top: 0%;
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  width: 100%;    
+  display: flex;
+  align-items: center; 
+  flex-direction: column;
+  justify-content: center;    
+`;
+
 
 function App() {
   
   const [onCategories, setOnCategories] = React.useState(false);
   const [onAddToCart, setOnAddToCart] = React.useState(false);
 
-  const [addCart, setAddCart] = React.useState(0);
+  const [userName, setUserName] = React.useState('Login');  
 
-  const [addToCartID, setAddToCartID] = React.useState(0);
-  const [addCardTrue, setAddCardTrue] = React.useState(false);
+  const [product, setProduct] = React.useState([]);
 
-  const DivLoginPage = styled.div`
-    position: relative;   
-    top: 0%;
-    grid-column: 1 / 2;
-    grid-row: 2 / 4;
-    width: 100%;    
-    display: flex;
-    align-items: center; 
-    flex-direction: column;
-    justify-content: center;    
-`;
  
+
   return (
     <>
-      <HashRouter>
-        <AuthProvider>
-          <NavigatorBar 
-            onCategories={onCategories} 
-            setOnCategories={setOnCategories}
-            onAddToCart={onAddToCart}
-            setOnAddToCart={setOnAddToCart}
-            addCart={addCart}
-          />
-          <DivLoginPage>
-            <Routes>          
-              <Route path="/" element={<HomePage 
-                onCategories={onCategories} 
-                onAddToCart={onAddToCart}                      
-                setAddToCartID={setAddToCartID}              
-                addCardTrue={addCardTrue}
-                setAddCardTrue={setAddCardTrue}
-                addToCartID={addToCartID}
-                addCart={addCart}
-                setAddCart={setAddCart}
-              />} />
-              <Route path="/login" element={<LoginPage/>}/>
-              <Route path="/create" element={<CreateAccount/>}/>
-              <Route path="/account" element={<AccountPage/>}/>
-              <Route path="/admin" element={<p></p>}/>
-              <Route path="*" element={<p>Not Found</p>}/>
-            </Routes>
-          </DivLoginPage>
-          </AuthProvider>
-      </HashRouter>
+      <CreateContext.Provider 
+        value={{
+          onCategories,
+          setOnCategories,
+          onAddToCart,
+          setOnAddToCart,          
+          
+          //AccountPage
+          setUserName,
+          userName,
+
+          product,
+          setProduct
+        }
+
+        }
+      >
+        <HashRouter>
+          <AuthProvider>
+            <NavigatorBar/>
+
+              <DivLoginPage>
+                <Routes>          
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/login" element={<LoginPage/>}/>
+                  <Route path="/create" element={<CreateAccount/>}/>
+                  <Route 
+                    path="/account" 
+                    element={
+                      <AuthRouter>
+                        <AccountPage />
+                      </AuthRouter>
+                    }
+                  />
+                  <Route path="/admin" element={<p></p>}/>
+                  <Route path="*" element={<p>Not Found</p>}/>
+                </Routes>
+              </DivLoginPage>
+            </AuthProvider>
+        </HashRouter>
+      </CreateContext.Provider>
     </>
   )
 }

@@ -20,7 +20,7 @@ const users = [
 
 // Creamos la función proveedora
 const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(null);
+    const [user, setUser] = React.useState(null);
     const navigate = useNavigate();
 
 
@@ -30,18 +30,18 @@ const AuthProvider = ({ children }) => {
         const correctUser = users.some(item => item.username === username && item.password === password);
         
         if(correctUser){
-            setIsAuthenticated({username});
-            navigate('/account');
+            setUser({username, password});
+            navigate('/');
         } else{
             console.log('User Not Found');
         }
     }
  
     const logout = () => {
-        setIsAuthenticated(null);
+        setUser(null);
     };
 
-    const auth = { isAuthenticated, login, logout }
+    const auth = { user, login, logout }
 
     return (
         <AuthContext.Provider value={auth}>
@@ -58,7 +58,7 @@ const useAuth = () => {
 };
 
 
-// Creamos nuestro Router
+// Creamos un Componente Protegido
 const AuthRouter = ({children}) => {
     const auth = useAuth();
 

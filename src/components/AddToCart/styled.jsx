@@ -4,13 +4,11 @@ const DivLogin = styled.div`
     position: absolute;   
     align-self: flex-end;   
     justify-self: flex-start;
-    top: 0;
-    margin-top: 20px;
-    margin-right: 10px;
+    top: 0;    
     width: 320px;
     max-width: 375px;    
     border-radius: 20px;
-    background-color: #e2e2e2; 
+    background-color: var(--white-secondary);
     padding: 20px 10px;
     display: grid;
     grid-template-columns: 100%;
@@ -18,6 +16,9 @@ const DivLogin = styled.div`
     justify-content: center;
     align-items: center;    
     z-index: 2;
+    box-shadow: -4px 4px 4px 0 rgba(0, 0, 0, 20.68%);
+    z-index: 5;
+    border-radius: 0px 0px 0px 20px;
 `;
 
 const DivCard = styled.div`

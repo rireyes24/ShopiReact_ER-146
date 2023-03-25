@@ -5,22 +5,28 @@ import { useAuth } from '../../utils/authentication';
 
 
 
-function LoginPage(){
-
+function LoginPage(){    
     const navigate = useNavigate();
-    const auth = useAuth();
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const auth = useAuth();  
+    const form = React.useRef(null);
+
 
     const login = (event) => {
         event.preventDefault();
-        auth.login({username, password});
+        const formData = new FormData(form.current);
+        const data = {
+            username: formData.get('user'),
+            password: formData.get('password'),
+        }
+        auth.login(data);
     }
+
 
     function clickCreate(){
         navigate('/create');        
         console.log('Oki');
     }
+    
 
     return(
         <>
@@ -30,27 +36,22 @@ function LoginPage(){
                 <DivLogin>
                     <span className="login__logo-long"></span>
 
-                    <FormLogin action="" className="login__form" onSubmit={login}>                    
+                    <FormLogin action="" className="login__form" ref={form}>                    
                         <InputLabel htmlFor="user">Email address</InputLabel>            
                         <InputText 
-                            id="user" 
+                            name="user" 
                             type="text" 
-                            placeholder="john" 
-                            value={username}
-                            onChange={event => setUsername(event.target.value)}
+                            placeholder="john"                             
                         />
                         
                         <InputLabel htmlFor="password">Password</InputLabel>           
                         <InputText 
-                            id="password" 
+                            name="password" 
                             type="password" 
                             placeholder="**********"
-                            value={password}
-                            onChange={event => setPassword(event.target.value)}
-                        />
-                                
+                        />                                
 
-                        <ButtonLogin type="submit">Log In</ButtonLogin>
+                        <ButtonLogin type={'button'} onClick={login}>Log In</ButtonLogin>
                         <Forgot href="/" >Forgot my password</Forgot>
                     </FormLogin> 
 

@@ -3,20 +3,22 @@ import './style.css'
 
 const DivCategories = styled.div`
     position: absolute;
-    bottom: 0;
+    top: 0;
     align-self: flex-start;
     width: 28%;
-    height: 92vh;
+    height: 652px;
     max-height: 92vh;
-    background-color: #ffffff;
-    padding: 20px;
+    background-color: var(--white-secondary);
+    padding: 20px 0px;
     display: grid;
     grid-template-rows: 10% 50% 20% 20%;
-    box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 4.68%);
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 20.68%);
     z-index: 5;
+    border-radius: 0px 0px 20px 0px;
 `;
 
 const CategoriesTitle = styled.h2`
+    margin-left: 20px;
     font-size: var(--md);
     font-weight: bold;
     line-height: 2rem;
@@ -24,15 +26,15 @@ const CategoriesTitle = styled.h2`
 `;
 
 const ListCategories = styled.ul`
-    width: 72%;
+    width: 100%;
     height: 100%; 
     justify-self: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;  
+    flex-direction: column;    
 `;
 
-const ListLi = styled.li`    
+const ListLi = styled.li` 
+
     font-size: var(--md);
     font-weight: bold;
     line-height: 2rem;   
@@ -66,33 +68,43 @@ const Email = styled.p`
 
 const Logout = styled.a`
     display: inline-block;
-    font-size: var(--md);
-    font-weight: bold;
+    
     line-height: 1.75rem;
     color: var(--hospital_green);
     text-decoration: none;  
+`;
+
+const ButtonCategories = styled.button`
+    font-size: var(--md);
+    font-weight: bold;
+    width: 100%;
+    height: 48px;
+    background-color: transparent;
+    border: none;
+    &:hover{
+        background-color: #d8d8d8;
+    }
 `;
 
 function Categories(){
     return(
         <>
         <DivCategories>
-            <CategoriesTitle class="title-categories">CATEGORIES</CategoriesTitle>
+            <CategoriesTitle className="title-categories">CATEGORIES</CategoriesTitle>
 
             <ListCategories id="ul-margin">
-                <ListLi><ListA href="">All</ListA></ListLi>
-                <ListLi><ListA href="">Clothes</ListA></ListLi>
-                <ListLi><ListA href="">Electronics</ListA></ListLi>
-                <ListLi><ListA href="">Furnitures</ListA></ListLi>
-                <ListLi><ListA href="">Toys</ListA></ListLi>
-                <ListLi><ListA href="">Others</ListA></ListLi>
+                <ListLi><ButtonCategories type={'button'}>Clothes</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>All</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>Electronics</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>Furnitures</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>Toys</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>Others</ButtonCategories></ListLi>
             </ListCategories>
 
             <DivAccount>
-                <ListLi><ListA href="">My orders</ListA></ListLi>
-                <ListLi><ListA href="">My account</ListA></ListLi>
+                <ListLi><ButtonCategories type={'button'}>My orders</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'}>My account</ButtonCategories></ListLi>
             </DivAccount>
-
             <DivAccount>
                 <Email >camilayokoo@gmail.com</Email>
                 <Logout href="">Logout</Logout>

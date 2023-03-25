@@ -19,10 +19,16 @@ const ButtonMenu = styled.button`
     height: 48px;
     display: grid;
     place-content: center;
+    background-color: transparent;
+    justify-self: flex-start;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     grid-column: 1 / 2;
+
+    &:hover{
+        background-color: #f0f0f0;
+    }
 `;
 
 const ButtonCart = styled.button`
@@ -35,7 +41,7 @@ const ButtonCart = styled.button`
     border-radius: 60px;
     background-color: transparent;
     cursor: pointer;
-    grid-column: 3 / 4;    
+    grid-column: 2 / 4;    
 `;
 
 const GreenCircle = styled.div`
@@ -53,4 +59,13 @@ const GreenCircle = styled.div`
     font-family: 'Quicksand', sans-serif;
 `;
 
-export { NavBar, ButtonMenu, ButtonCart, GreenCircle };
+const DivUserCart = styled.div`
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 100%;
+        place-items: center;
+`;
+
+export { NavBar, ButtonMenu, DivUserCart, ButtonCart, GreenCircle };

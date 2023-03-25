@@ -2,25 +2,19 @@ import React from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { Categories } from '../../components/Categories';
 import { AddToCart } from '../../components/AddToCart';
+import { CreateContext } from '../../context/AppContext.js'
 
-const HomePage = (props) => {
+const HomePage = () => {
+
+    const { onCategories, onAddToCart } = React.useContext(CreateContext);
 
     return(
        <>
-            {props.onCategories && <Categories />}   
+            {onCategories && <Categories />}   
 
-            <ProductCard                
-                setAddToCartID={props.setAddToCartID}
-                addCardTrue={props.addCardTrue}
-                setAddCardTrue={props.setAddCardTrue}
-                addToCartID={props.addToCartID}
-                addCart={props.addCart} 
-                setAddCart={props.setAddCart}
-             />
+            <ProductCard />
 
-            {props.onAddToCart && 
-                <AddToCart addCart={props.addCart} />
-            }
+            {onAddToCart && <AddToCart />}
        </>
     );
 }
