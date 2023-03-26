@@ -29,6 +29,7 @@ function App() {
   
   const [onCategories, setOnCategories] = React.useState(false);
   const [onAddToCart, setOnAddToCart] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(false);
 
   const [userName, setUserName] = React.useState('Login');  
 
@@ -50,7 +51,10 @@ function App() {
           userName,
 
           product,
-          setProduct
+          setProduct,
+
+          darkMode, 
+          setDarkMode,
         }
 
         }
@@ -59,7 +63,7 @@ function App() {
           <AuthProvider>
             <NavigatorBar/>
 
-              <DivLoginPage>
+              <DivLoginPage className={`${darkMode ? 'dark' : 'white'}`}>
                 <Routes>          
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage/>}/>

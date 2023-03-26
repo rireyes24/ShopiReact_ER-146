@@ -1,0 +1,9 @@
+.button-delete{
+    display: inline-block;
+    background-image: url('../../assets/icons/remove.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 34px;
+    height: 34px;
+}

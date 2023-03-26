@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, ButtonMenu, DivUserCart, ButtonCart, GreenCircle } from './styled';
+import { NavBar, ButtonMenu, DivUserCart, ButtonCart, GreenCircle, ButtonDarkMode } from './styled';
 import './style.css';
 import { CreateContext } from '../../context/AppContext';
 
@@ -10,12 +10,14 @@ function NavigatorBar(){
         setOnCategories,
         onAddToCart, 
         setOnAddToCart,          
-        userName
+        userName,
+        product,
+        darkMode, 
+        setDarkMode,
     } = React.useContext(CreateContext)
     
-
     return(
-        <NavBar className="navbar">
+        <NavBar className={`navbar ${darkMode ? 'dark' : 'white'}`} >
 
             <ButtonMenu onClick={() => setOnCategories(!onCategories)}>
                 <span className="icon-menu"></span>
@@ -24,11 +26,15 @@ function NavigatorBar(){
             <span className="icon-logo"></span> 
 
             <DivUserCart>
+                <ButtonDarkMode onClick={() =>  setDarkMode(!darkMode)}>
+                    <span className={`theme-logo ${darkMode ? 'theme-light' : 'theme-dark'}`}></span>
+                </ButtonDarkMode>
+
                 <p>{userName}</p>            
 
                 <ButtonCart onClick={() => setOnAddToCart(!onAddToCart)}>            
                     <span className="icon-cart"></span>
-                    <GreenCircle><p></p></GreenCircle>
+                    <GreenCircle><p>{product.length}</p></GreenCircle>
                 </ButtonCart>
             </DivUserCart>
             

@@ -7,7 +7,7 @@ const TableGrid = styled.div`
     grid-template-columns: repeat(auto-fill, 182px);   
     place-content: center; 
     gap: 34px;
-    margin-top: 100px;    
+    margin-top: 32px;    
     margin-bottom: 200px;  
 `;
 
@@ -38,8 +38,7 @@ const H3Card = styled.h3`
     display: grid;
     align-items: center;
     font-size: var(--md);
-    font-family: 'Roboto', sans-serif;    
-    color: #404040;
+    font-family: 'Roboto', sans-serif;        
     letter-spacing: 1px;
 `;
 
@@ -52,8 +51,7 @@ const H4Card = styled.h4`
     align-items: center;
     font-size: var(--sm);
     font-weight: 400;
-    font-family: 'Quicksand', sans-serif;
-    color: #404040;
+    font-family: 'Quicksand', sans-serif;    
     letter-spacing: 1px;
 `;
 
@@ -64,11 +62,17 @@ const ButtonAddCart = styled.button`
     grid-row: 3 / 5;
     justify-self: center;
     align-self: center;
-    width: 48px;
-    height: 48px;       
+    width: 44px;
+    height: 44px;       
     display: grid;
     place-content: center;
     cursor: pointer;
+    background-color: var( --hospital_green);
+    border-radius: 50px;
+
+    &:hover{
+        background-color: #979797;
+    }
 `;
 
 export { TableGrid, DivCard, ImageCard, H3Card, H4Card, ButtonAddCart };

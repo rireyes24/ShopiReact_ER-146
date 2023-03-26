@@ -1,0 +1,17 @@
+.arrow{
+    background-repeat: no-repeat;    
+    background-position: center;
+    background-size: contain;
+    width: 80%;
+    height: 80%;   
+    align-self: center;
+    justify-self: center;
+}
+
+.arrow-left{
+    background-image: url('../../assets/icons/arrow-left.png');   
+}
+
+.arrow-right{
+    background-image: url('../../assets/icons/arrow-right.png');   
+}

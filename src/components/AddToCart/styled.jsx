@@ -25,10 +25,10 @@ const DivCard = styled.div`
     
     width: 100%;
     height: 90px; 
-    border: 2px solid #bebebe;    
+    border: none;    
     display: grid;
-    grid-template-columns: 30% 5% 35% 30%;  
-    grid-auto-flow: 100%;  
+    grid-template-columns: 30% 5% 45% 20%;  
+    grid-template-rows: 50% 50%;  
     margin: 5px;
     border-radius: 10px;    
 `;
@@ -40,6 +40,7 @@ const ImageCard = styled.img`
     border-radius: 8px;
     box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 40%);
     grid-column: 1 / 2;
+    grid-row: 1 / 3;
     object-fit: cover ;    
     overflow: hidden;    
     align-self: center;
@@ -49,9 +50,10 @@ const ImageCard = styled.img`
 const H3Card = styled.h3`
     width: 100%;
     height: 100%;
-    grid-column: 4 / 5;       
+    grid-column: 3 / 4;       
+    grid-row: 2 / 3;
     display: grid;
-    place-items: center;
+    align-self:center;    
     font-size: var(--md);
     font-family: 'Roboto', sans-serif;    
     color: #404040;
@@ -74,13 +76,12 @@ const H4Card = styled.h4`
 
 const DivInfoProducts = styled.div`    
     width: 100%;
-    height: 80px; 
+    height: 60px; 
     display: grid;
-    grid-template-columns: 60% 40%; 
-    grid-template-rows: 50% 50%; 
+    grid-template-columns: 50% 50%; 
+    grid-template-rows: 60% 40%; 
     place-items: center;    
-    margin: 5px;
-    margin-bottom: 10px;
+    margin: 30px 5px 20px 5px;
     border-radius: 8px;
 `;
 
@@ -94,8 +95,8 @@ const PDate = styled.p`
 `;
 
 const PArticles = styled.p`
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
     font-size: var(--sm);
     font-weight: 400;
     line-height: 1.7rem;
@@ -104,7 +105,7 @@ const PArticles = styled.p`
 
 const PPrice = styled.p`
     grid-column: 2 / 3;
-    grid-row: 1 / 3;
+    grid-row: 2 / 3;
     font-size: var(--md);
     font-weight: bold;
     line-height: 1.87rem;
@@ -113,12 +114,24 @@ const PPrice = styled.p`
     align-self: center;
 `;
 
+const PTotal = styled.p`
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-size: var(--md);
+    font-weight: bold;
+    line-height: 1.87rem;
+    color: #404040;
+    justify-self: self-start;
+    align-self: center;
+    padding-left: 34px;
+`;
+
 const ButtonBuy = styled.button`
     width: 100%;
     height: 54px;    
     border-radius: 10px;
     border: 0;
-    margin-top: 26px;
+    margin-top: 10px;
     background-color: var(--hospital_green);
     font-size: var(--lg);
     font-weight: bold;
@@ -127,8 +140,52 @@ const ButtonBuy = styled.button`
     display: grid;
     place-content: center;
     cursor: pointer;
+
+    &:hover{
+        background-color: #979797;
+    }
+`;
+
+const ButtonDelete = styled.button`
+    width: 40px;
+    height: 40px;    
+    border-radius: 8px;
+    border: 0;
+    align-self: center;
+    justify-self: center;   
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+    background-color: #e44a4a;
+    font-size: var(--lg);
+    font-weight: bold;
+    line-height: 2.25rem;
+    color: var(--white);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #e47272;
+        
+    }
+
+    &:active{
+        background-color: #ce5353;
+    }
 `;
 
 
-
-export { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice, ButtonBuy };
+export { 
+    DivLogin,
+    DivCard, 
+    ImageCard, 
+    H3Card, 
+    H4Card, 
+    DivInfoProducts, 
+    PDate, 
+    PArticles, 
+    PPrice, 
+    ButtonBuy, 
+    PTotal, 
+    ButtonDelete, 
+};

@@ -2,7 +2,8 @@ import React from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { Categories } from '../../components/Categories';
 import { AddToCart } from '../../components/AddToCart';
-import { CreateContext } from '../../context/AppContext.js'
+import { CreateContext } from '../../context/AppContext.js';
+import { Banners } from '../../components/Banners';
 
 const HomePage = () => {
 
@@ -10,7 +11,9 @@ const HomePage = () => {
 
     return(
        <>
-            {onCategories && <Categories />}   
+            {onCategories && <Categories />}  
+
+            <Banners />
 
             <ProductCard />
 

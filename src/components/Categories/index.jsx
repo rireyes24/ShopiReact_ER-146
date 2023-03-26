@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import { CreateContext } from '../../context/AppContext.js';
 import styled from 'styled-components';
 import './style.css'
 
@@ -7,8 +9,7 @@ const DivCategories = styled.div`
     align-self: flex-start;
     width: 28%;
     height: 652px;
-    max-height: 92vh;
-    background-color: var(--white-secondary);
+    max-height: 92vh;    
     padding: 20px 0px;
     display: grid;
     grid-template-rows: 10% 50% 20% 20%;
@@ -87,23 +88,31 @@ const ButtonCategories = styled.button`
 `;
 
 function Categories(){
+
+    const {       
+        darkMode, 
+    } = useContext(CreateContext);
+
+    const DM_Background = `${darkMode ?  'dark' : 'white'}`;
+    const DM_Name = `${darkMode ? 'white-color' : 'dark-color'}`;
+
     return(
         <>
-        <DivCategories>
-            <CategoriesTitle className="title-categories">CATEGORIES</CategoriesTitle>
+        <DivCategories className={DM_Background}>
+            <CategoriesTitle className={`title-categories ${DM_Name}`}>CATEGORIES</CategoriesTitle>
 
             <ListCategories id="ul-margin">
-                <ListLi><ButtonCategories type={'button'}>Clothes</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>All</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>Electronics</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>Furnitures</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>Toys</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>Others</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Clothes</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>All</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Electronics</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Furnitures</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Toys</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Others</ButtonCategories></ListLi>
             </ListCategories>
 
             <DivAccount>
-                <ListLi><ButtonCategories type={'button'}>My orders</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'}>My account</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>My orders</ButtonCategories></ListLi>
+                <ListLi><ButtonCategories type={'button'} className={DM_Name}>My account</ButtonCategories></ListLi>
             </DivAccount>
             <DivAccount>
                 <Email >camilayokoo@gmail.com</Email>
