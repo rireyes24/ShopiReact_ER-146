@@ -3,7 +3,7 @@ import { ShopiContext } from "../../context/AppContext";
 import styled from "styled-components";
 import { ImageCard } from "../../components/Card";
 import { useNavigate } from "react-router-dom";
-import { ButtonDelete } from "../../components/AddToCart/styled";
+import { ButtonDelete } from "../../components/ButtonDelete";
 
 
 const Container = styled.div`

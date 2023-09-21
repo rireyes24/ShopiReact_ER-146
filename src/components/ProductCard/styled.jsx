@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { H4Card } from '../H4Card';
 import './style.css'
 
 const TableGrid = styled.div`
@@ -43,18 +44,7 @@ const H3Card = styled.h3`
     letter-spacing: 1px;
 `;
 
-const H4Card = styled.h4`
-    width: 100%;
-    height: 100%;
-    grid-column: 1 / 2;
-    grid-row: 4 / 5;
-    display: grid;
-    align-items: center;
-    font-size: var(--sm);
-    font-weight: 400;
-    font-family: 'Quicksand', sans-serif;    
-    letter-spacing: 1px;
-`;
+
 
 const ButtonAddCart = styled.button`
     border: none;

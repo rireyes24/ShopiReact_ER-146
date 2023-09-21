@@ -1,13 +1,15 @@
 import React from 'react';
-import { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice, PTotal, ButtonDelete } from './styled';
+import { DivLogin, DivCard, ImageCard, H3Card, DivInfoProducts, PDate, PArticles, PPrice, PTotal } from './styled';
 import { ShopiContext } from '../../context/AppContext';
-import { ButtonBuy } from '../ButtonBuy';
 import { useNavigate } from 'react-router-dom';
+import { ButtonBuy } from '../ButtonBuy';
+import { ButtonDelete } from '../ButtonDelete';
+import { H4Card } from '../H4Card';
 import './style.css'
 
 function AddToCart(){
 
-    const { product, setProduct, setProductLength, myOrders, setMyOrders } = React.useContext(ShopiContext);
+    const { product, setProduct, myOrders, setMyOrders } = React.useContext(ShopiContext);
 
     const price = product.map(price => price.price);
     const priceTotal = price.reduce((a, b) =>  a + b, 0);
@@ -32,7 +34,7 @@ function AddToCart(){
         }, 100);
     }
 
-    console.log('ORDER: ', myOrders);
+    //console.log('ORDER: ', myOrders);
     
     return(
         <>

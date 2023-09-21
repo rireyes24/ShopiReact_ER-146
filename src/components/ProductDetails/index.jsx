@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useProductsDetails } from '../../hooks/useProductsDetails.js';
 import { ImageCard } from '../Card';
 import { ButtonBuy } from '../ButtonBuy';
+import { H4Card } from '../H4Card.js';
 
 
 const Container = styled.div` 
@@ -18,7 +19,7 @@ const Container = styled.div`
     background-color: var(--white-secondary);
     padding: 20px 10px;
     display: grid;
-    grid-template-rows: 40% repeat(6, 10%);
+    grid-template-rows: 40%  10% 20% repeat(3, 10%);
     place-items: center;
     justify-content: center;
     align-items: center;    
@@ -30,13 +31,6 @@ const Container = styled.div`
     justify-items: center;
 `;
 
-const Button = styled.button`
-    width: 80%;
-    height: 40px;
-    border: none;
-    box-shadow: -4px 4px 4px 0 rgba(0, 0, 0, 20.68%);
-    border-radius: 8px;
-`;
 
 const ProductDetails = () => {
     
@@ -47,15 +41,24 @@ const ProductDetails = () => {
             <ImageCard 
                 src={detailProduct.images[0]}
                 style={{
-                    width: '280px',
+                    width: '90%',
+                    gridColumn: '1 / 2'
                 }}
             />
             <h1>{detailProduct.title}</h1>
-            <h2>{detailProduct.price}</h2>
-            <h3>{detailProduct.description}</h3>
+            <h2 style={{
+                gridColumn: '1 / 2'
+            }}>Price: ${detailProduct.price}</h2>
+            <H4Card style={{
+                    width: '90%',
+                    gridColumn: '1 / 2', 
+                    gridRow: '3 / 4',
+                }}
+            >{detailProduct.description}</H4Card>
            
             <ButtonBuy
                 style={{
+                    width: '90%',
                     gridColumn: '1 / 2', 
                     gridRow: '6 / 7',
                 }}
@@ -64,6 +67,7 @@ const ProductDetails = () => {
              <ButtonBuy 
                 onClick={() => setShowDetail(false)}
                 style={{
+                    width: '90%',
                     backgroundColor: 'red',
                     gridColumn: '1 / 2', 
                     gridRow: '7 / 8',
