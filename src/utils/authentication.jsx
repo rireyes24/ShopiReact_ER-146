@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ShopiContext } from '../context/AppContext';
 import React, { createContext } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 
@@ -9,17 +11,21 @@ export const AuthContext = createContext();
 const users = [
     {
         username: 'eduardo',
-        password: 'mandalorian',
+        password: '123',
     },
     {
-        username: 'claribel',
-        password: 'quimica',
+        username: 'marty',
+        password: '123',
     },
 ];
 
 
 // Creamos la función proveedora
 const AuthProvider = ({ children }) => {
+
+    
+    const { setUserName } = useContext(ShopiContext);
+
     const [user, setUser] = React.useState(null);
     const navigate = useNavigate();
 
@@ -31,7 +37,9 @@ const AuthProvider = ({ children }) => {
         
         if(correctUser){
             setUser({username, password});
+            setUserName(username.toUpperCase());
             navigate('/');
+            
         } else{
             console.log('User Not Found');
         }

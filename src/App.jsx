@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { HashRouter, Routes, Route} from 'react-router-dom';
+import { HashRouter, Routes, Route, useRoutes} from 'react-router-dom';
 import { NavigatorBar } from './components/NavigatorBar';
 import { HomePage } from './pages/Home';
 import { LoginPage } from './pages/Login';
-import { CreateAccount } from './pages/CreateAccount';
+import { ShopiContext } from './context/AppContext'
 import { AccountPage } from './pages/Account';
 import { AuthProvider } from './utils/authentication';
 import { AuthRouter } from './utils/authentication';
-import { CreateContext } from './context/AppContext';
+import { CreateAccount } from './pages/CreateAccount'
+import { getProducts } from './API/getProducts';
+import { useProducts } from './hooks/useProducts';
+import { useProductsDetails } from './hooks/useProductsDetails';
+import { MyOrder } from './pages/Order';
+import { MyOrders } from './pages/Orders';
 
 import './App.css'
 
@@ -24,6 +29,24 @@ const DivLoginPage = styled.div`
   justify-content: center;    
 `;
 
+const AppRoutes = () => {
+  const routes = useRoutes([
+    { path: '/', element: <HomePage /> },    
+    { path: '/home', element: <HomePage /> },
+    { path: '/login', element: <LoginPage /> }, 
+    { path: '/create', element: <CreateAccount /> },
+    { path: '/account', element: <AuthRouter> <AccountPage /> </AuthRouter> },
+    { path: '/products/:id', element: <h1>Aqui deberian ir los productos por categoria</h1> },
+    { path: '/orders', element: <MyOrders></MyOrders> },
+    { path: '/orders/order', element: <MyOrder></MyOrder> },
+    { path: '/orders/order/:id', element: <MyOrder></MyOrder> },
+    { path: '/admin', element: <h1>Aqui se Administra....</h1> },
+    { path: '*', element: <h1>Not Found Che...</h1> },
+  ]);
+
+  return routes;
+}
+
 
 function App() {
   
@@ -31,15 +54,24 @@ function App() {
   const [onAddToCart, setOnAddToCart] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
 
-  const [userName, setUserName] = React.useState('Login');  
+  const [userName, setUserName] = React.useState('LOGIN');  
 
   const [product, setProduct] = React.useState([]);
 
- 
+
+  const [detailProduct, setProductDetail] = useState({images: ['']});
+  const [showDetail, setShowDetail] = useState(false);
+
+  const { apiProducts } = useProducts();
+  
+  //const { detailProduct, productDetail } = useProductsDetails();
+
+
+  const [myOrders, setMyOrders] = useState([]);
 
   return (
     <>
-      <CreateContext.Provider 
+      <ShopiContext.Provider 
         value={{
           onCategories,
           setOnCategories,
@@ -55,6 +87,15 @@ function App() {
 
           darkMode, 
           setDarkMode,
+
+          apiProducts,
+          detailProduct,
+          setProductDetail,
+          setShowDetail,
+          showDetail,
+          //productDetail,
+
+          myOrders, setMyOrders,
         }
 
         }
@@ -62,27 +103,12 @@ function App() {
         <HashRouter>
           <AuthProvider>
             <NavigatorBar/>
-
               <DivLoginPage className={`${darkMode ? 'dark' : 'white'}`}>
-                <Routes>          
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/login" element={<LoginPage/>}/>
-                  <Route path="/create" element={<CreateAccount/>}/>
-                  <Route 
-                    path="/account" 
-                    element={
-                      <AuthRouter>
-                        <AccountPage />
-                      </AuthRouter>
-                    }
-                  />
-                  <Route path="/admin" element={<p></p>}/>
-                  <Route path="*" element={<p>Not Found</p>}/>
-                </Routes>
+                <AppRoutes />      
               </DivLoginPage>
-            </AuthProvider>
+          </AuthProvider>                      
         </HashRouter>
-      </CreateContext.Provider>
+      </ShopiContext.Provider>
     </>
   )
 }

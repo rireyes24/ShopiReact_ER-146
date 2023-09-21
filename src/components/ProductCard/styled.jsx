@@ -28,6 +28,7 @@ const ImageCard = styled.img`
     object-fit: cover;
     border-radius: 20px;
     overflow: hidden;    
+    cursor: pointer;
 `;
 
 const H3Card = styled.h3`

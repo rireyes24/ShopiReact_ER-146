@@ -1,41 +1,51 @@
 import React from 'react';
-import { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice, ButtonBuy, PTotal, ButtonDelete } from './styled';
-import { CreateContext } from '../../context/AppContext';
+import { DivLogin, DivCard, ImageCard, H3Card, H4Card, DivInfoProducts, PDate, PArticles, PPrice, PTotal, ButtonDelete } from './styled';
+import { ShopiContext } from '../../context/AppContext';
+import { ButtonBuy } from '../ButtonBuy';
+import { useNavigate } from 'react-router-dom';
 import './style.css'
 
 function AddToCart(){
 
-    const { product, setProduct, setProductLength } = React.useContext(CreateContext);
+    const { product, setProduct, setProductLength, myOrders, setMyOrders } = React.useContext(ShopiContext);
 
-    const imagesURL = 'https://res.cloudinary.com/dejj8n6g7/image/upload/v1679423980/YardSaleReact';
-   
     const price = product.map(price => price.price);
     const priceTotal = price.reduce((a, b) =>  a + b, 0);
 
-    function deleteToCart(id){                
-        const cartIndex = product.findIndex(item => item.id === id);
-        const productDelete = product[cartIndex];   
+    function deleteToCart(id){              
+       
+        const newProduct = product.filter(product => id !== product.id)
+        setProduct(newProduct);   
         
-        if(productDelete.id === id){
-            const newProduct = product.filter((product, i) => i !== cartIndex)
-            setProduct(newProduct);
-         
-        }
+        const boton = document.getElementById(id);
+        boton.style.background = 'var( --hospital_green)';
+        boton.disabled = false;       
+    }
+    
+
+    const navigate = useNavigate();
+
+    function goToOrder(){
+        setMyOrders([...myOrders, { id: myOrders.length + 1, name: `Order ${myOrders.length + 1}`, order: [...product]}])
+        setTimeout(()=> {            
+            navigate('/orders/order');       
+        }, 100);
     }
 
-
+    console.log('ORDER: ', myOrders);
+    
     return(
         <>
             <h2>My Order</h2>            
             <DivLogin>  
 
                 {product.map(product => (
-                <DivCard key={Math.random()}>
-                    <ImageCard src={`${imagesURL}/${product.image}`} alt={product.name} />                
-                    <H3Card>$ {product.price}</H3Card>
-                    <H4Card>{product.name}</H4Card>  
-                    <ButtonDelete type={'button'} onClick={() => deleteToCart(product.id)}><span class="button-delete"></span></ButtonDelete>                      
-                </DivCard>
+                    <DivCard key={product.id}>
+                        <ImageCard src={product.images[0]} alt={product.title} />                
+                        <H3Card>$ {product.price}</H3Card>
+                        <H4Card>{product.tlite}</H4Card>  
+                        <ButtonDelete type={'button'} onClick={() => deleteToCart(product.id)}><span className="button-delete"></span></ButtonDelete>                      
+                    </DivCard>
                 ))}          
 
                 <DivInfoProducts>                    
@@ -45,7 +55,7 @@ function AddToCart(){
                     <PPrice>$ {priceTotal}</PPrice>
                 </DivInfoProducts>
 
-                <ButtonBuy>BUY</ButtonBuy>                        
+                <ButtonBuy onClick={goToOrder}>BUY</ButtonBuy>                        
 
             </DivLogin>  
         </>

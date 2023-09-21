@@ -1,11 +1,11 @@
 import React from 'react'
 import {DivLoginPage, H3Subtitle, H4Data, ButtonEdit} from './styled';
 import { useAuth } from '../../utils/authentication';
-import { CreateContext } from '../../context/AppContext';
+import { ShopiContext } from '../../context/AppContext';
 
 function AccountPage(){
 
-    const {setUserName, userName} = React.useContext(CreateContext);
+    const {setUserName, userName} = React.useContext(ShopiContext);
     const auth = useAuth();
 
     setUserName(auth.user.username);

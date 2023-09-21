@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const CreateContext = createContext();
+const ShopiContext = createContext();
 
-export { CreateContext };
+export { ShopiContext };

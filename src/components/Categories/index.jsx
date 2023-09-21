@@ -1,7 +1,8 @@
 import {useContext} from 'react';
-import { CreateContext } from '../../context/AppContext.js';
+import { ShopiContext } from '../../context/AppContext.js';
 import styled from 'styled-components';
 import './style.css'
+import { useNavigate } from 'react-router-dom';
 
 const DivCategories = styled.div`
     position: absolute;
@@ -85,16 +86,32 @@ const ButtonCategories = styled.button`
     &:hover{
         background-color: #d8d8d8;
     }
+    cursor: pointer;
 `;
 
 function Categories(){
 
     const {       
         darkMode, 
-    } = useContext(CreateContext);
+    } = useContext(ShopiContext);
 
     const DM_Background = `${darkMode ?  'dark' : 'white'}`;
     const DM_Name = `${darkMode ? 'white-color' : 'dark-color'}`;
+
+    const navigate = useNavigate();
+
+    function goToCategory(category){
+        navigate(`/products/${category.toLowerCase()}`)
+    }
+
+    const categories = [
+        { id: 1, category: 'All'},
+        { id: 2, category: 'Clothes'},
+        { id: 3, category: 'Electronics'},
+        { id: 4, category: 'Furnitures'},
+        { id: 5, category: 'Toys'},
+        { id: 6, category: 'Others'},
+    ]
 
     return(
         <>
@@ -102,18 +119,23 @@ function Categories(){
             <CategoriesTitle className={`title-categories ${DM_Name}`}>CATEGORIES</CategoriesTitle>
 
             <ListCategories id="ul-margin">
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Clothes</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>All</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Electronics</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Furnitures</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Toys</ButtonCategories></ListLi>
-                <ListLi><ButtonCategories type={'button'} className={DM_Name}>Others</ButtonCategories></ListLi>
+                {categories.map(item => (  
+                    <ListLi key={item.id}>
+                        <ButtonCategories 
+                            type={'button'} 
+                            className={DM_Name}
+                            onClick={()=> {goToCategory(item.category)}}
+                        >{item.category}
+                        </ButtonCategories>
+                    </ListLi>
+                ))}
             </ListCategories>
 
             <DivAccount>
                 <ListLi><ButtonCategories type={'button'} className={DM_Name}>My orders</ButtonCategories></ListLi>
                 <ListLi><ButtonCategories type={'button'} className={DM_Name}>My account</ButtonCategories></ListLi>
             </DivAccount>
+
             <DivAccount>
                 <Email >camilayokoo@gmail.com</Email>
                 <Logout href="">Logout</Logout>
