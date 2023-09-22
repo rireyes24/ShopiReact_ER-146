@@ -60,7 +60,7 @@ const ProductDetails = () => {
                 style={{
                     width: '90%',
                     gridColumn: '1 / 2', 
-                    gridRow: '6 / 7',
+                    gridRow: '5 / 6',
                 }}
             >COMPRAR</ButtonBuy>
 
@@ -70,7 +70,7 @@ const ProductDetails = () => {
                     width: '90%',
                     backgroundColor: 'red',
                     gridColumn: '1 / 2', 
-                    gridRow: '7 / 8',
+                    gridRow: '6 / 7',
                 }}
             >CLOSE</ButtonBuy>
 

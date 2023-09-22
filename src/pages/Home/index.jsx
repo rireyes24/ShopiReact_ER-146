@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductCard } from '../../components/ProductCard';
+import { ContainerCard } from '../../components/ContainerCards';
 import { Categories } from '../../components/Categories';
 import { AddToCart } from '../../components/AddToCart';
 import { ShopiContext } from '../../context/AppContext.js';
@@ -21,9 +21,7 @@ const HomePage = () => {
 
             { showDetail ? <ProductDetails /> : <></>}
 
-            <ProductCard />
-
-            
+            <ContainerCard />
 
             {onAddToCart && <AddToCart />}
        </>

@@ -93,6 +93,7 @@ function Categories(){
 
     const {       
         darkMode, 
+        categoryID, setCategoryID
     } = useContext(ShopiContext);
 
     const DM_Background = `${darkMode ?  'dark' : 'white'}`;
@@ -105,12 +106,12 @@ function Categories(){
     }
 
     const categories = [
-        { id: 1, category: 'All'},
-        { id: 2, category: 'Clothes'},
-        { id: 3, category: 'Electronics'},
-        { id: 4, category: 'Furnitures'},
-        { id: 5, category: 'Toys'},
-        { id: 6, category: 'Others'},
+        { id: 0, category: 'All'},
+        { id: 1, category: 'Clothes'},
+        { id: 2, category: 'Electronics'},
+        { id: 3, category: 'Furnitures'},
+        { id: 4, category: 'Shoes'},
+        { id: 5, category: 'Others'},
     ]
 
     return(
@@ -119,13 +120,16 @@ function Categories(){
             <CategoriesTitle className={`title-categories ${DM_Name}`}>CATEGORIES</CategoriesTitle>
 
             <ListCategories id="ul-margin">
-                {categories.map(item => (  
+                {categories.map((item, index) => (  
                     <ListLi key={item.id}>
                         <ButtonCategories 
                             type={'button'} 
                             className={DM_Name}
-                            onClick={()=> {goToCategory(item.category)}}
-                        >{item.category}
+                            onClick={()=> {
+                                goToCategory(item.category);
+                                setCategoryID(index);
+                            }}
+                        >{item.category.toUpperCase()}
                         </ButtonCategories>
                     </ListLi>
                 ))}

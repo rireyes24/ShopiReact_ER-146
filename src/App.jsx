@@ -11,9 +11,11 @@ import { AuthRouter } from './utils/authentication';
 import { CreateAccount } from './pages/CreateAccount'
 import { getProducts } from './API/getProducts';
 import { useProducts } from './hooks/useProducts';
+import { useProductsByTitle } from './hooks/useProductsByTitle';
 import { useProductsDetails } from './hooks/useProductsDetails';
 import { MyOrder } from './pages/Order';
 import { MyOrders } from './pages/Orders';
+import { CategoriesPage } from './pages/Categories';
 
 import './App.css'
 
@@ -36,7 +38,7 @@ const AppRoutes = () => {
     { path: '/login', element: <LoginPage /> }, 
     { path: '/create', element: <CreateAccount /> },
     { path: '/account', element: <AuthRouter> <AccountPage /> </AuthRouter> },
-    { path: '/products/:id', element: <h1>Aqui deberian ir los productos por categoria</h1> },
+    { path: '/products/:id', element: <CategoriesPage></CategoriesPage> },
     { path: '/orders', element: <MyOrders></MyOrders> },
     { path: '/orders/order', element: <MyOrder></MyOrder> },
     { path: '/orders/order/:id', element: <MyOrder></MyOrder> },
@@ -63,11 +65,18 @@ function App() {
   const [showDetail, setShowDetail] = useState(false);
 
   const { apiProducts } = useProducts();
+
   
+  const [search, setSearch] = useState(' ');
+  
+
   //const { detailProduct, productDetail } = useProductsDetails();
 
 
   const [myOrders, setMyOrders] = useState([]);
+
+
+  const [categoryID, setCategoryID] = useState(0);
 
   return (
     <>
@@ -96,6 +105,10 @@ function App() {
           //productDetail,
 
           myOrders, setMyOrders,
+
+          search, setSearch,
+
+          categoryID, setCategoryID
         }
 
         }
