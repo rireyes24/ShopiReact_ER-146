@@ -75,19 +75,18 @@ const ProductCard = ({id, image, title, price, darkMode, productDetail, handleCl
             /> 
             <H3Card className={darkMode}>$ {price}</H3Card>
             <H3Card style={{
-                width: '120px',
-                height: '30px',
+                width: '110px',
+                height: '28px',
                 display: 'grid',
                 placeContent: 'center',
-                borderRadius: '6px',
+                borderRadius: '14px',
                 backgroundColor: '#e4e4e4a4',
                 position: 'absolute',
                 bottom: '10px',
                 left: '10px',
                 gridRow: '1 / 2',
                 zIndex: 3,     
-                fontSize: '14px',
-                letterSpacing: '1px'
+                fontSize: '12px',
             }}>{category}</H3Card>
             <H4Card className={darkModeTitle}>{title}</H4Card>
             <ButtonAddCart id={id} onClick={() => handleClick(id)}><span className="button-add-card"></span></ButtonAddCart>                     

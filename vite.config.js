@@ -7,5 +7,6 @@ export default defineConfig({
   server: {
     open: true,
     port: 1985,
-  }
+  },
+  base: 'ShopiReact',
 })
