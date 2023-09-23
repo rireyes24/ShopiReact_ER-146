@@ -8,5 +8,4 @@ export default defineConfig({
     open: true,
     port: 1985,
   },
-  base: 'ShopiReact',
 })
